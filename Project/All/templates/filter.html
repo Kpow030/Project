@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block content %}
+  <h1>Filter Advertisements</h1>
+  <form method="get">
+    <label for="category">Категории:</label>
+    <select name="category" id="category">
+      <option value="">Все категории</option>
+      {% for category in categories %}
+        <option value="{{ category.pk }}"{% if category.pk == request.GET.category %} selected{% endif %}>{{ category.name }}</option>
+      {% endfor %}
+    </select>
+    <label for="popularity">Популярность:</label>
+    <select name="popularity" id="popularity">
+      <option value="">Любая популярность</option>
+      <option value="asc"{% if request.GET.popularity == 'asc' %} selected{% endif %}>Least popular</option>
+      <option value="desc"{% if request.GET.popularity == 'desc' %} selected{% endif %}>Most popular</option>
+    </select>
+    <label for="date_added">Дата добавления:</label>
+    <select name="date_added" id="date_added">
+      <option value="">Любая дата</option>
+      <option value="asc"{% if request.GET.date_added == 'asc' %} selected{% endif %}>Oldest first</option>
+      <option value="desc"{% if request.GET.date_added == 'desc' %} selected{% endif %}>Newest first</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+  {% for advertisement in advertisements %}
+    <h2>{{ advertisement.title }}</h2>
+    <p>{{ advertisement.description }}</p>
+    <p>Price: {{ advertisement.price }}</p>
+    <p>Категория: {{ advertisement.category.name }}</p>
+    <p>Дата добавления: {{ advertisement.created_at }}</p>
+    <p>Популярность: {{ advertisement.popularity }}</p>
+  {% empty %}
+    <p>No advertisements found.</p>
+  {% endfor %}
+{% endblock %}
