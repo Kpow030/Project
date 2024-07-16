@@ -1,1 +1,7 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Добрый день!{% endblocktrans %}
 
+{% block content %}{% endblock %}
+
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %} Если письмо пришло по ошибке, пожалуйста не обращайте на него внимания)
+{{ site_domain }}{% endblocktrans %}
+{% endautoescape %}
