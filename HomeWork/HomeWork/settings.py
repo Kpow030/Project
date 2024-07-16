@@ -183,16 +183,16 @@ ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "shura.titov2018@yandex.ru"
-EMAIL_HOST_PASSWORD = "232501zaic007"
+EMAIL_HOST_USER = "shura.titov@yandex.ru"
+EMAIL_HOST_PASSWORD = "*********"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'shura.titov2018@yandex.ru'
+DEFAULT_FROM_EMAIL = 'shura.titov@yandex.ru'
 
 
-SERVER_EMAIL = "shura.titov2018@yandex.ru"
+SERVER_EMAIL = "shura.titov@yandex.ru"
 ADMINS = (
-    ('kpow', 'shura.titov2018@yandex.ru'),
+    ('kpow', 'shura.titov@yandex.ru'),
 )
 
 SOCIALACCOUNT_PROVIDERS = {
