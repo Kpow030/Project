@@ -1,0 +1,48 @@
+{% extends 'flatpages/default.html' %}
+
+
+
+
+{% block title %}
+Post
+{% endblock title %}
+
+
+{% block content %}
+
+        <h3><td>{{ post.title }}</td>
+        <td>{{ post.dateCreation|date:'d M Y' }}</td>
+        <td>{{ post.text|safe }}</td></h3>
+    </tr>
+    <br>
+    <td>{% if perms.board.post_update %}
+                <a href="{% url 'post_edit' pk=post.pk %}"><u> <button type="submit"
+                        class="btn btn-primary">Редактировать</button> </u></a>
+                    {% endif %}</td>
+            <!-- ссылка на редактирование -->
+                <td>{% if perms.board.post_delete %}
+                <a href="{% url 'post_delete' pk=post.pk %}"><u> <button type="submit" class="btn btn-primary">Удалить</button>
+                </u></a>
+                    <!-- ссылка на удаление -->
+                {% endif %}
+                </td>
+
+{% if user.is_authenticated %}
+    <h1>Add Response ...</h1>
+    </br>
+    <div class="form-group">
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Добавить отклик</button>
+        </form></br></br></br>
+    </div>
+
+{% else %}
+
+    Please login to add comment ...
+
+{% endif %}
+
+
+{% endblock content %}

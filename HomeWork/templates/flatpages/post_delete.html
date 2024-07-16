@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %} Добавить пост {% endblock title %}
+
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/summernote.js' %}"></script>
+
+<h3>Создание нового поста</h3>
+<form class="form" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Добавить пост</button>
+</form>
+{% endblock content %}
